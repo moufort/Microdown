@@ -122,7 +122,8 @@ MicReferenceChecker >> collectBadFigureReferences [
 	existingFigure := anchors select: [ :each |
 		                  each isKindOf: MicFigureBlock ].
 	badReference := existingFigure reject: [ :figure |
-		                  rootDirectory fileSystem exists: figure reference path].
+		                rootDirectory fileSystem exists:
+			                rootDirectory fullName ,'/',figure reference path ].
 	badReference do: [ :each | self addBadFigureReference: each ]
 ]
 
